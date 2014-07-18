@@ -5,6 +5,7 @@ TrelloClone.Views.DropDownView = Backbone.View.extend({
   },
   
   createBoard: function(event) {
+    var view = this;
     var $form = $(event.target);
     var boardTitle = $form.find('input').val() || 
           'Untitled Board';
@@ -12,8 +13,10 @@ TrelloClone.Views.DropDownView = Backbone.View.extend({
       success: function(board) {
         var id = board.id;
         Backbone.history.navigate('/boards/' + id, { trigger: true })
+        view.reset();
       }
     });
+    return false
   },
   
   events: {
@@ -34,14 +37,19 @@ TrelloClone.Views.DropDownView = Backbone.View.extend({
     this.$el.html(renderedContent)
     return this;
   },
-  
-  tagName: 'ul',
-  
-  template: JST['layout/dropdown'],
+
+  reset: function() {
+    this.render();
+    this.$el.parent().removeClass('open');
+  },
   
   showForm: function(event) {
     this.$el.html(this.formTemplate())
     return false;
-  }
+  },
+  
+  tagName: 'ul',
+  
+  template: JST['layout/dropdown'],
 
 })
