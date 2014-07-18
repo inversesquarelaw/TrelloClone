@@ -1,4 +1,6 @@
 TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
+  className: 'clearfix',
+  
   events: {
     'sortstop': 'saveListsOrder'
   },

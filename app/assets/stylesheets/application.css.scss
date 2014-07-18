@@ -20,7 +20,7 @@ $brand-primary  : #598FAD;
 
 // for fixed top navbar
 body {
-  padding-top: 70px; 
+  padding-top: 60px; 
 }
 
 .panel-spaced {
@@ -121,6 +121,28 @@ ul {
 .show-board-header {
   color: #f6f6f6;
   margin-left: 20px;
+}
+
+.lists-window {
+  position: absolute;
+  bottom: 0;
+  top: 100px;
+  left: 0;
+  right: 0;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+#lists, #list-form, .list {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.list {
+  background-color: #e3e3e3;
+  width: 260px;
+  margin: 0 5px;
+  border-radius: 3px;
 }
 
 // .backdrop {
