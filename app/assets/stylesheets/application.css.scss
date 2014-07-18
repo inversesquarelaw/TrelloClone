@@ -35,6 +35,34 @@ body {
   font-size: 30px;
 }
 
+.add-menu {
+  width: 300px;
+  max-height: 150px;
+  .header {
+    line-height:30px;
+    text-align: center;
+    color: #939393;
+    display: block;
+    height: 30px;
+  }
+  li {
+    a {
+      white-space: normal;
+      .add-item-description {
+        display: block;
+        clear: both;
+        color: #939393;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+      &:hover, &:hover .add-item-description {
+        background-color: #318ec4;
+        color: #fff;
+      }
+    }
+  }
+}
+
 // .backdrop {
 //   position: absolute;
 //   background-color: #23719F;
