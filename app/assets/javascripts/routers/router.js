@@ -1,4 +1,11 @@
 TrelloClone.Routers.Router = Backbone.Router.extend({
+  initialize: function() {
+    var dropDownView = new TrelloClone.Views.DropDownView({
+      collection: TrelloClone.Collections.boards
+    })
+    $('#add-dropdown').append(dropDownView.render().$el);
+  },
+  
   routes: {
     "": "boardsIndex",
     "boards/:id": "boardShow"
