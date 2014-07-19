@@ -1,6 +1,12 @@
 TrelloClone.Views.CardShow = Backbone.View.extend({
   template: JST['cards/show'],
-  className: 'well well-sm',
+  className: 'well well-sm card-display',
+
+  attributes: function() {
+    return {
+      'data-card-id': this.model.id
+    };
+  },
 
   render: function () {
     var content = this.template({
