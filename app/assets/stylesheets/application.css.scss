@@ -135,6 +135,9 @@ ul {
   padding-bottom: 10px;
   margin-bottom: 10px;
   overflow-y: hidden;  
+  > div * {
+    white-space: normal;
+  }
   &::-webkit-scrollbar {
     border-radius: 12px;
     height: 12px;
@@ -158,17 +161,16 @@ ul {
   }
 }
 
-#lists, #list-form, .list {
+#lists, #list-form, .list-display {
   display: inline-block;
   vertical-align: top;
 }
 
 #lists {
   height: 100%;
-
 }
 
-.list {
+.list-display {
   background-color: #e3e3e3;
   width: 260px;
   margin: 0 5px;
@@ -184,10 +186,35 @@ ul {
   overflow-y: auto;
 }
 
+.list-cards::-webkit-scrollbar {
+  border-radius: 10px;
+  width: 8px;
+}
+
+.list-cards::-webkit-scrollbar-track {
+  background-color: #d0d0d0;
+  border-radius: 10px;
+}
+
+.list-cards::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 10px;
+}
+
 .list-heading {
   cursor: grab;
   cursor: -webkit-grab;
-  white-space: normal;
+  font-size: 15px;
+  padding: 3px 26px 2px 6px;
+  min-height: 19px;
+  h4 {
+    line-height: 18px;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
+    min-height: 19px;
+  }
 }
 
 .card {
@@ -196,6 +223,12 @@ ul {
   border-bottom: 1px solid #ccc;
   margin-bottom: 5px;
   padding: 6px 8px 4px;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #f0f0f0;
+  border-bottom-color: #c2c2c2;
 }
 
 .add-card {
@@ -210,12 +243,3 @@ ul {
    color: #111; 
   }
 }
-
-// .backdrop {
-//   position: absolute;
-//   background-color: #23719F;
-//   top: 50px;
-//   bottom: 0px;
-//   width: 2000px;
-//   text-align: left;
-// }
