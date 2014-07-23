@@ -9,18 +9,21 @@ TrelloClone.Views.ListShow = Backbone.CompositeView.extend({
     'sortstop': 'saveCards'
   },
   template: JST['lists/show'],
-  className: "col-md-3",
+
+  className: "list-display",
 
   initialize: function () {
     this.collection = this.model.cards();
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addCard);
+    this.listenTo(this.collection, 'add resize', this.setHeight);
   },
 
   addCard: function (card) {
     var view = new TrelloClone.Views.CardShow({
       model: card
     });
+    this.addSubview(".list-cards", view);
     this.addSubview(".cards", view);
   },
 
@@ -55,9 +58,12 @@ TrelloClone.Views.ListShow = Backbone.CompositeView.extend({
       list: this.model
     });
     this.$el.html(content);
+    this.$el.data('list-id', this.model.id);
 
     this.renderCards();
     this.renderFooter();
+    setTimeout(this.setHeight.bind(this));
+    // this.setHeight();
     return this;
   },
 
@@ -70,7 +76,19 @@ TrelloClone.Views.ListShow = Backbone.CompositeView.extend({
     var formView = new TrelloClone.Views.CardForm({
       collection: this.model.cards()
     });
-    this.addSubview(".panel-footer", formView);
+    this.addSubview(".list-footer", formView);
+  },
+
+  setHeight: function() {
+    this.$('.list-cards').css('')
+    var listsHeight = this.$el.parent().height();
+    var listHeight = this.$el.height();
+    var headerHeight = this.$('.list-heading').height();
+    var footerHeight = this.$('.list-footer').height();
+    var cardsHeight = this.$('.list-cards').height();
+
+    this.$('.list-cards').css('max-height',
+          listsHeight - headerHeight - footerHeight - 11);
   },
 
   saveCards: function(event) {

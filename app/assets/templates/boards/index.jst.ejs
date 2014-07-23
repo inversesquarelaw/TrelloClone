@@ -1,9 +1,17 @@
-<h2>My Boards</h2>
 
-<% boards.each(function (board) { %>
-  <div class="panel panel-default col-md-3 col-md-offset-1">
-    <div class="panel-body">
-      <a href="#/boards/<%= board.id %>"><%= board.escape("title") %></a>
-    </div>
-  </div>
-<% }); %>
+<div class='boards-index-title'>
+  <h3>My Boards</h3>
+</div>
+
+<ul class='boards'>
+  <% boards.each(function (board) { %>
+    <li>
+      <a href="#/boards/<%= board.id %>">
+        <span class='shadow'></span>
+        <span class='details'>        
+          <%= board.escape("title") %>
+        </span>
+      </a>
+    </li>
+  <% }); %>
+</ul>

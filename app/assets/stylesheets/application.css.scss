@@ -20,7 +20,7 @@ $brand-primary  : #598FAD;
 
 // for fixed top navbar
 body {
-  padding-top: 70px; 
+  padding-top: 60px; 
 }
 
 .panel-spaced {
@@ -35,11 +35,211 @@ body {
   font-size: 30px;
 }
 
-// .backdrop {
-//   position: absolute;
-//   background-color: #23719F;
-//   top: 50px;
-//   bottom: 0px;
-//   width: 2000px;
-//   text-align: left;
-// }
+.add-menu {
+  width: 300px;
+  max-height: 150px;
+  .header {
+    line-height:30px;
+    text-align: center;
+    color: #939393;
+    display: block;
+    height: 30px;
+  }
+  li {
+    a {
+      white-space: normal;
+      .add-item-description {
+        display: block;
+        clear: both;
+        color: #939393;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+      &:hover, &:hover .add-item-description {
+        background-color: #318ec4;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.boards, .boards-index-title {
+  margin-left: 38px;
+  padding: 0;
+}
+
+.boards > li, .boards > li a {
+  box-sizing: content-box;
+//  background-clip: border-box;
+}
+.boards > li {
+  width: 25%;
+  float: left;
+  position: relative;
+  a {
+    height: 90px;
+    margin: 0 16px 16px 0;
+    color: #f6f6f6;
+    background-color: #23719F;
+    font-size: 16px;
+    padding: 8px 12px;
+    display: block;
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: 700;
+    box-sizing: normal;
+    position: relative;
+    &:hover .shadow {
+      background-color: rgba(0,0,0,0.25);
+    }
+  }
+  .shadow {
+    background-color: rgba(0, 0, 0, 0.15);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+  }
+  .details {
+    color: #f6f6f6;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    padding: 8px 10px;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+.show-board-header {
+  color: #f6f6f6;
+  margin-left: 20px;
+}
+
+.lists-window {
+  position: absolute;
+  bottom: 0;
+  top: 100px;
+  left: 0;
+  right: 0;
+  white-space: nowrap;
+  overflow-x: auto;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  overflow-y: hidden;  
+  > div * {
+    white-space: normal;
+  }
+  &::-webkit-scrollbar {
+    border-radius: 12px;
+    height: 12px;
+    width: 12px;
+//    padding-bottom: 5px;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: block;
+    width: 5px;
+    height: 5px;
+  }
+  &::-webkit-scrollbar-track-piece {
+    background: rgba(0,0,0,.15);
+    border-radius: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,.4);
+    border-radius: 12px;
+  }
+}
+
+#lists, #list-form, .list-display {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#lists {
+  height: 100%;
+}
+
+.list-display {
+  background-color: #e3e3e3;
+  width: 260px;
+  margin: 0 5px;
+  border-radius: 3px;
+  max-height: 100%;
+  overflow: scroll;
+  padding: 4px 3px 3px;
+}
+
+.list-cards {
+  padding: 4px 4px 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.list-cards::-webkit-scrollbar {
+  border-radius: 10px;
+  width: 8px;
+}
+
+.list-cards::-webkit-scrollbar-track {
+  background-color: #d0d0d0;
+  border-radius: 10px;
+}
+
+.list-cards::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 10px;
+}
+
+.list-heading {
+  cursor: grab;
+  cursor: -webkit-grab;
+  font-size: 15px;
+  padding: 3px 26px 2px 6px;
+  min-height: 19px;
+  h4 {
+    line-height: 18px;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
+    min-height: 19px;
+  }
+}
+
+.card {
+  border-radius: 3px;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 5px;
+  padding: 6px 8px 4px;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #f0f0f0;
+  border-bottom-color: #c2c2c2;
+}
+
+.add-card {
+  display: block;
+  margin: 2px -3px -3px;
+  padding: 7px 10px;
+  color: #939393;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  &:hover {
+   background-color: #c3c3c3;
+   color: #111; 
+  }
+}

@@ -12,5 +12,19 @@ TrelloClone.Views.CardForm = Backbone.LinkFormView.extend({
 
     this.$('textarea').val('');
     this.$('textarea').focus();
-  }
+  },
+
+  render: function () {
+    var content;
+    if(this.formShowing) {
+      content = this.formTemplate();
+    } else {
+      content = this.linkTemplate();
+    }
+
+    this.$el.html(content);
+    this.delegateEvents();
+    this.collection.trigger('resize');
+    return this;
+  },
 });
