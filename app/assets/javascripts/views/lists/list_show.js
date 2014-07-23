@@ -3,14 +3,16 @@ TrelloClone.Views.ListShow = Backbone.CompositeView.extend({
     modelElement: '.card-display',
     modelName: 'card',
   },
+
   events: {
     'sortreceive': 'receiveCard',
     'sortremove': 'removeCard',
     'sortstop': 'saveCards'
   },
+
   template: JST['lists/show'],
 
-  className: "list-display",
+  className: 'list-display',
 
   initialize: function () {
     this.collection = this.model.cards();
@@ -23,8 +25,7 @@ TrelloClone.Views.ListShow = Backbone.CompositeView.extend({
     var view = new TrelloClone.Views.CardShow({
       model: card
     });
-    this.addSubview(".list-cards", view);
-    this.addSubview(".cards", view);
+    this.addSubview('.list-cards', view);
   },
 
   receiveCard: function(event, ui) {
@@ -46,7 +47,7 @@ TrelloClone.Views.ListShow = Backbone.CompositeView.extend({
         cardId = $cardDisplay.data('card-id'),
         cards = this.model.cards(),
         cardToRemove = cards.get(cardId),
-        cardSubviews = this.subviews('.cards');
+        cardSubviews = this.subviews('.list-cards');
     cards.remove(cardToRemove);
     // TODO: Figure out how to safely remove subview.
     //var subviewToRemove = _.findWhere(cardSubviews, {model: cardToRemove});
@@ -69,14 +70,14 @@ TrelloClone.Views.ListShow = Backbone.CompositeView.extend({
 
   renderCards: function () {
     this.model.cards().each(this.addCard.bind(this));
-    this.$('.cards').sortable({connectWith: '.cards'});
+    this.$('.list-cards').sortable({connectWith: '.list-cards'});
   },
 
   renderFooter: function () {
     var formView = new TrelloClone.Views.CardForm({
       collection: this.model.cards()
     });
-    this.addSubview(".list-footer", formView);
+    this.addSubview('.list-footer', formView);
   },
 
   setHeight: function() {
