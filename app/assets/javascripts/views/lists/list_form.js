@@ -11,5 +11,5 @@ TrelloClone.Views.ListForm = Backbone.LinkFormView.extend({
     }, { wait: true });
     this.$('textarea').val('');
     this.$('textarea').focus();
-  },
+  }
 });

@@ -4,11 +4,12 @@ TrelloClone.Routers.Router = Backbone.Router.extend({
       collection: TrelloClone.Collections.boards
     })
     $('#add-dropdown').append(dropDownView.render().$el);
+    this.$rootEl = $('#main');
   },
-  
+
   routes: {
-    "": "boardsIndex",
-    "boards/:id": "boardShow"
+    '': 'boardsIndex',
+    'boards/:id': 'boardShow'
   },
 
   boardsIndex: function () {
@@ -35,6 +36,6 @@ TrelloClone.Routers.Router = Backbone.Router.extend({
     this.currentView && this.currentView.remove();
     this.currentView = view;
     // TODO: Save jQuery object for #main to instance variable in initialize.
-    $('#main').html(view.render().$el);
+    this.$rootEl.html(view.render().$el);
   }
 });

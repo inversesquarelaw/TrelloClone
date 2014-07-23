@@ -26,5 +26,5 @@ TrelloClone.Views.CardForm = Backbone.LinkFormView.extend({
     this.delegateEvents();
     this.collection.trigger('resize');
     return this;
-  },
+  }
 });
